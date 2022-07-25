@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy 4 elements to &apos;Practice50/src/(default package)&apos;&#x0D;&#x0A;- Original project: &apos;Practice49&apos;&#x0D;&#x0A;- Destination element: &apos;Practice50/src/(default package)&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     Movable.java&#x0D;&#x0A;     Shape.java&#x0D;&#x0A;     Rectangle.java&#x0D;&#x0A;     Triangle.java" description="Copy compilation units" destination="=Practice50/src&lt;" element1="/src&lt;{Movable.java" element2="/src&lt;{Shape.java" element3="/src&lt;{Rectangle.java" element4="/src&lt;{Triangle.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1618218858811" units="4" version="1.0"/>
+</session>

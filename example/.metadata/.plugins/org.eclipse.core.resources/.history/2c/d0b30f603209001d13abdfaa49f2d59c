@@ -1,0 +1,85 @@
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.IOException;
+import java.util.StringTokenizer;
+import java.util.Queue;
+import java.util.LinkedList;
+import java.util.ArrayList;
+import java.util.Collections;
+
+public class Main {
+	public static void main(String[] args) throws IOException{
+		BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer token = new StringTokenizer(bf.readLine()," ");
+		int M = Integer.parseInt(token.nextToken());
+		int N = Integer.parseInt(token.nextToken());
+		int K = Integer.parseInt(token.nextToken());
+		int[][] map = new int[N][M];
+		int w;
+		ArrayList<Integer> list = new ArrayList<Integer>();
+		
+		//x, y에 상하좌우 값을 더하기 위함
+        int[] dx = {-1, 0, 1, 0}; // 상하
+        int[] dy = {0, -1, 0, 1}; //좌우
+        
+        int x, y;
+        Queue<Node> que = new LinkedList<>();
+		
+		for(int i = 0; i < K; i++) {
+			token = new StringTokenizer(bf.readLine()," ");
+			int x1 = Integer.parseInt(token.nextToken());
+			int y1 = Integer.parseInt(token.nextToken());
+			int x2 = Integer.parseInt(token.nextToken());
+			int y2 = Integer.parseInt(token.nextToken());
+			
+			for(int j = x1; j < x2; j++)
+				for(int k = y1; k < y2; k++)
+					map[j][k] = 1;
+		}		
+
+        for(int i = 0; i < N; i++) {
+			for(int j = 0; j < M; j++) {
+				if(map[i][j] == 0) {
+					x = i;
+					y = j;
+					
+			        que.offer(new Node(x, y));
+			        w = 1;
+			        while(!que.isEmpty()) {
+			            Node node = que.poll();
+                    	map[node.x][node.y] = 1;
+			            
+			            //4가지 방향 확인
+			            for(int k = 0; k < 4; k++) {
+			                x = node.x + dx[k];
+			                y = node.y + dy[k];
+			                
+			                if(x >= 0 && y >= 0 && x < N && y < M && map[x][y] == 0) {
+		                        que.offer(new Node(x, y));
+		                        w++;                      
+			                }
+			            }
+			        }
+					list.add(w);
+				}
+			}
+        }
+        
+        System.out.println(list.size());
+        Collections.sort(list);
+        for (Integer li : list) {
+            System.out.print(li + " ");
+        }
+	}
+}
+
+
+class Node {
+    int x;
+    int y;
+    
+    public Node(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+}
